@@ -1,2 +1,4 @@
-#!/bin/bash
-exec < /dev/tty && node_modules/.bin/git-cz --hook || true
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents
