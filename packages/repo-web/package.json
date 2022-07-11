@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "echo \"Testing repo server\"",
+    "test": "echo \"Testing repo web\"",
     "eject": "react-scripts eject",
     "precommit": "npm run test"
   },
