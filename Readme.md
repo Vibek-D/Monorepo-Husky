@@ -20,9 +20,11 @@ cz-conventional-changelog --save-dev --save-exact" if using npm, and use "commit
 8) So now husky will have a "commit-msg" script which will match the "commitizen" commit message format and if it validates only then it will add the commit
 
 9) 
-a) Add the command "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents" in the "husky/pre-commit" which uses lerna to recursively run the "precommit" script in each of the indivisual package's package.json file and then runs the "husky/commit-msg" file
+  a) Add the command "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents" in the "husky/pre-commit" which uses lerna to recursively run the "precommit" script in each of the indivisual package's package.json file and then runs the "husky/commit-msg" file. So basically when we do "git cz"(equivalent to git commit, since we are using commitizen package), it runs the
+  commands in the pre-commit  
 
-b) We can use a) or 
+  b) We can use a) or we can add a script in the global package.json like "test": "lerna run test" which uses lerna to run the "test"
+  script in each of the package's package.json file's test script. Then we just need to replace the a) command "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents" with "npm run test". And now when we commit, husky will run the "pre-commit" hook file and it will find the "npm run test" command and it will run the test script in the global package json which runs "lerna run test" which runs the test script in all of the indivisual test script in the packages package.json file
 
 Note: So now in all the packages, the pre-commit hook will run and then the commit-msg hook will run using husky when we commit using "git cz" (which is commitizen basically). So using just one command all our mono repos will be tested and the committed
 
