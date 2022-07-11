@@ -1,7 +1,7 @@
-# Monorepo-Husky
+# Monorepo-Husky-Lerna
 A monorepo using lerna and using husky to run precommit hooks and then commit validation testing with commit hooks in all the monorepo packages
 
-## Steps to be noted
+## Steps to be noted for using husky with lerna
 1) In the rootb directory "npm install -D lerna" as a dev dependency
 
 2) Run "npx lerna init" which creates the package folder
@@ -29,3 +29,5 @@ cz-conventional-changelog --save-dev --save-exact" if using npm, and use "commit
 Note: So now in all the packages, the pre-commit hook will run and then the commit-msg hook will run using husky when we commit using "git cz" (which is commitizen basically). So using just one command all our mono repos will be tested and the committed
 
 Note: If any command shows an error showing that "command [something] noyt found, install that npm package globally using" say "npm install --g lerna"
+
+Note: To install the same package say "lodash", we can use the command "npx lerna add lodash", whcih will add lodash in the global node_modules and we can use it in the indivisual packages. But for that we have to add 
