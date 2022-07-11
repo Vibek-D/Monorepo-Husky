@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "testing",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "lerna run test",
+    "start": "lerna run start",
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff"
   },
   "keywords": [],
   "author": "",
